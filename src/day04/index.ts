@@ -6,6 +6,7 @@ type Elf = {
   min: number;
   max: number;
 };
+
 type Line = { elf1: Elf; elf2: Elf };
 
 const contains = (line: Line) => {
@@ -32,6 +33,8 @@ const part1 = (rawInput: string) => {
       max: +line.split(",")[1].split("-")[1],
     },
   }));
+  type Lines = typeof lines;
+  type Line = Lines[number];
   let count = 0;
   for (const line of lines) {
     if (contains(line)) {
