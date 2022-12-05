@@ -97,3 +97,5 @@ run({
   trimTestInputs: true,
   onlyTests: false,
 });
+
+4 + "hello"
