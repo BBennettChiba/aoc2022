@@ -1,5 +1,4 @@
 import run from "aocrunner";
-import { reverse } from "dns";
 
 const parseInput = (rawInput: string) => rawInput;
 
@@ -61,13 +60,9 @@ const mapLineToObj = (
 
 const part1 = (rawInput: string) => {
   const input = parseInput(rawInput);
-  const diagram = input.split("\n\n")[0];
+  const diagram = getColumns(input.split("\n\n")[0].split("\n"));
   const moves = input.split("\n\n")[1].split("\n").map(mapLineToObj);
-  const rows = diagram.split("\n");
-  const lastRow = rows[rows.length - 1];
-  const columns = getColumns(rows);
-  columns.splice(columns.length - 1);
-  const rotated = rotateMatrixAntiClockwise(columns);
+  const rotated = rotateMatrixAntiClockwise(diagram);
   for (const move of moves) {
     for (let i = 0; i < move.howMany; i++) {
       moveCol(rotated, move.from, move.to);
@@ -81,13 +76,9 @@ const part1 = (rawInput: string) => {
 
 const part2 = (rawInput: string) => {
   const input = parseInput(rawInput);
-  const diagram = input.split("\n\n")[0];
+  const diagram = getColumns(input.split("\n\n")[0].split("\n"));
   const moves = input.split("\n\n")[1].split("\n").map(mapLineToObj);
-  const rows = diagram.split("\n");
-  const lastRow = rows[rows.length - 1];
-  const columns = getColumns(rows);
-  columns.splice(columns.length - 1);
-  const rotated = rotateMatrixAntiClockwise(columns);
+  const rotated = rotateMatrixAntiClockwise(diagram);
   for (const move of moves) {
     moveCol(rotated, move.from, move.to, move.howMany);
   }
