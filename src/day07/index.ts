@@ -1,4 +1,5 @@
 import run from "aocrunner";
+//@ts-ignore
 
 type Directory = {
   [name: string]: File | Directory;
@@ -91,6 +92,7 @@ const part2 = (rawInput: string) => {
       if (size && typeof size === "number") totalSize += size;
       else {
         totalSize += getDirectoriesBySize(directory[key] as Directory);
+        //@ts-ignore
         sizes[key] = getDirectoriesBySize(directory[key] as Directory);
       }
     }
@@ -101,7 +103,9 @@ const part2 = (rawInput: string) => {
   const sizesBiggerThanX = [];
   console.log(sizes);
   for (let key in sizes) {
+    //@ts-ignore
     if (sizes[key] >= 8381165) {
+      //@ts-ignore
       sizesBiggerThanX.push(sizes[key]);
     }
   }
